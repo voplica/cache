@@ -1,5 +1,5 @@
-import * as cache from "@actions/cache";
-import * as core from "@actions/core";
+import * as cache from "@voplica/cache";
+import * as core from "@voplica/core";
 
 import { Events, Inputs, RefKey } from "../src/constants";
 import { saveImpl } from "../src/saveImpl";
@@ -7,13 +7,13 @@ import { StateProvider } from "../src/stateProvider";
 import * as actionUtils from "../src/utils/actionUtils";
 import * as testUtils from "../src/utils/testUtils";
 
-jest.mock("@actions/core");
-jest.mock("@actions/cache");
+jest.mock("@voplica/core");
+jest.mock("@voplica/cache");
 jest.mock("../src/utils/actionUtils");
 
 beforeAll(() => {
     jest.spyOn(core, "getInput").mockImplementation((name, options) => {
-        return jest.requireActual("@actions/core").getInput(name, options);
+        return jest.requireActual("@voplica/core").getInput(name, options);
     });
 
     jest.spyOn(actionUtils, "getInputAsArray").mockImplementation(
@@ -299,7 +299,7 @@ test("save with reserve cache failure outputs warning", async () => {
     const saveCacheMock = jest
         .spyOn(cache, "saveCache")
         .mockImplementationOnce(() => {
-            const actualCache = jest.requireActual("@actions/cache");
+            const actualCache = jest.requireActual("@voplica/cache");
             const error = new actualCache.ReserveCacheError(
                 `Unable to reserve cache with key ${primaryKey}, another job may be creating this cache.`
             );

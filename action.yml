@@ -1,4 +1,4 @@
-name: 'Cache'
+name: 'Voplica - Cache'
 description: 'Cache artifacts like dependencies and build outputs to improve workflow execution time'
 author: 'GitHub'
 inputs:
@@ -34,6 +34,10 @@ inputs:
       save-always does not work as intended and will be removed in a future release.
       A separate `actions/cache/restore` step should be used instead.
       See https://github.com/actions/cache/tree/main/save#always-save-cache for more details.
+  file-size-limit:
+    description: 'File size limit in bytes. Default is 10GB (Maximum file size supported by GitHub)'
+    required: false
+    default: '1073741824'
 outputs:
   cache-hit:
     description: 'A boolean value to indicate an exact match was found for the primary key'

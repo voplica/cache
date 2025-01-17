@@ -1,0 +1,33 @@
+name: CI
+on:
+  push:
+    branches:
+      - 'main'
+
+permissions:
+  contents: write
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup token
+        run: | 
+          sed -i 's|\${PACKAGES_TOKEN}|${{ secrets.PACKAGES_TOKEN }}|g' .npmrc
+
+      - name: Build
+        run: |
+          mkdir release
+          npm install
+          npm run build
+          cp -R dist action.yml save restore lib .licenses .licensed.yml jest.config.js release/
+
+      - name: Publish into release branch
+        uses: s0/git-publish-subdir-action@v2.6.0
+        env:
+          REPO: self
+          BRANCH: latest
+          FOLDER: release
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

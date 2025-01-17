@@ -1,4 +1,4 @@
-import * as core from "@actions/core";
+import * as core from "@voplica/core";
 
 import { Outputs, State } from "./constants";
 
