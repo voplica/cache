@@ -1,0 +1,22 @@
+sources:
+  npm: true
+
+allowed:
+  - apache-2.0
+  - bsd-2-clause
+  - bsd-3-clause
+  - isc
+  - mit
+  - cc0-1.0
+  - unlicense
+  - 0bsd
+
+reviewed:
+  npm:
+  - sax
+  - "@protobuf-ts/plugin-framework" # Apache-2.0
+  - "@protobuf-ts/runtime" # Apache-2.0
+  - fs.realpath # ISC
+  - glob # ISC
+  - prettier # MIT
+  - lodash # MIT
