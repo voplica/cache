@@ -94,3 +94,6 @@ typings/
 
 # Text editor files
 .vscode/
+
+# Intellij IDEA
+.idea

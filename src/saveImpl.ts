@@ -32,6 +32,12 @@ export async function saveImpl(
             return;
         }
 
+        try{
+            cache.setFileSizeLimit(utils.getInputAsInt(Inputs.FileSizeLimit));
+        } catch (err){
+            console.error(err);
+        }
+
         // If restore has stored a primary key in state, reuse that
         // Else re-evaluate from inputs
         const primaryKey =

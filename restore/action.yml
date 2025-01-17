@@ -1,4 +1,4 @@
-name: 'Restore Cache'
+name: 'Voplica - Restore Cache'
 description: 'Restore Cache artifacts like dependencies and build outputs to improve workflow execution time'
 author: 'GitHub'
 inputs:
