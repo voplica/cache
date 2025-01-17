@@ -1,4 +1,4 @@
-import * as core from "@actions/core";
+import * as core from "@voplica/core";
 
 import { Events, RefKey, State } from "../src/constants";
 import {
@@ -7,15 +7,15 @@ import {
     StateProvider
 } from "../src/stateProvider";
 
-jest.mock("@actions/core");
+jest.mock("@voplica/core");
 
 beforeAll(() => {
     jest.spyOn(core, "getInput").mockImplementation((name, options) => {
-        return jest.requireActual("@actions/core").getInput(name, options);
+        return jest.requireActual("@voplica/core").getInput(name, options);
     });
 
     jest.spyOn(core, "setOutput").mockImplementation((key, value) => {
-        return jest.requireActual("@actions/core").setOutput(key, value);
+        return jest.requireActual("@voplica/core").setOutput(key, value);
     });
 });
 
@@ -39,7 +39,7 @@ test("StateProvider saves states", async () => {
     const setOutputMock = jest
         .spyOn(core, "setOutput")
         .mockImplementation((key, value) => {
-            return jest.requireActual("@actions/core").setOutput(key, value);
+            return jest.requireActual("@voplica/core").setOutput(key, value);
         });
 
     const cacheMatchedKey = "node-cache";
@@ -61,19 +61,19 @@ test("NullStateProvider saves outputs", async () => {
     const getStateMock = jest
         .spyOn(core, "getState")
         .mockImplementation(name =>
-            jest.requireActual("@actions/core").getState(name)
+            jest.requireActual("@voplica/core").getState(name)
         );
 
     const setOutputMock = jest
         .spyOn(core, "setOutput")
         .mockImplementation((key, value) => {
-            return jest.requireActual("@actions/core").setOutput(key, value);
+            return jest.requireActual("@voplica/core").setOutput(key, value);
         });
 
     const saveStateMock = jest
         .spyOn(core, "saveState")
         .mockImplementation((key, value) => {
-            return jest.requireActual("@actions/core").saveState(key, value);
+            return jest.requireActual("@voplica/core").saveState(key, value);
         });
 
     const cacheMatchedKey = "node-cache";

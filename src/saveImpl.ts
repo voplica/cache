@@ -1,5 +1,5 @@
-import * as cache from "@actions/cache";
-import * as core from "@actions/core";
+import * as cache from "@voplica/cache";
+import * as core from "@voplica/core";
 
 import { Events, Inputs, State } from "./constants";
 import {
@@ -8,6 +8,7 @@ import {
     StateProvider
 } from "./stateProvider";
 import * as utils from "./utils/actionUtils";
+import { logInfo } from "./utils/actionUtils";
 
 // Catch and log any unhandled exceptions.  These exceptions can leak out of the uploadChunk method in
 // @actions/toolkit when a failed upload closes the file descriptor causing any in-process reads to
@@ -30,6 +31,12 @@ export async function saveImpl(
                 } is not supported because it's not tied to a branch or tag ref.`
             );
             return;
+        }
+
+        let maxFileSizeLimit = utils.getInputAsInt(Inputs.FileSizeLimit);
+        utils.logInfo(`Setting file size limit to ${ maxFileSizeLimit } .`);
+        if (maxFileSizeLimit != null) {
+            cache.setFileSizeLimit(maxFileSizeLimit);
         }
 
         // If restore has stored a primary key in state, reuse that

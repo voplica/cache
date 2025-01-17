@@ -1,9 +1,9 @@
 ---
-name: "@actions/glob"
+name: "@voplica/glob"
 version: 0.1.2
 type: npm
 summary: Actions glob lib
-homepage: https://github.com/actions/toolkit/tree/main/packages/glob
+homepage: https://github.com/voplica/toolkit/tree/main/packages/glob
 license: mit
 licenses:
 - sources: LICENSE.md

@@ -1,5 +1,5 @@
-import * as cache from "@actions/cache";
-import * as core from "@actions/core";
+import * as cache from "@voplica/cache";
+import * as core from "@voplica/core";
 
 import { Events, RefKey } from "../src/constants";
 import { restoreOnlyRun } from "../src/restoreImpl";

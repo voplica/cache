@@ -1,9 +1,9 @@
 ---
-name: "@actions/core"
+name: "@voplica/core"
 version: 1.11.1
 type: npm
 summary: Actions core lib
-homepage: https://github.com/actions/toolkit/tree/main/packages/core
+homepage: https://github.com/voplica/toolkit/tree/main/packages/core
 license: mit
 licenses:
 - sources: LICENSE.md

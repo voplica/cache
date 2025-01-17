@@ -1,5 +1,5 @@
-import * as cache from "@actions/cache";
-import * as core from "@actions/core";
+import * as cache from "@voplica/cache";
+import * as core from "@voplica/core";
 
 import { RefKey } from "../constants";
 
@@ -28,6 +28,10 @@ export function isExactKeyMatch(key: string, cacheKey?: string): boolean {
 export function logWarning(message: string): void {
     const warningPrefix = "[warning]";
     core.info(`${warningPrefix}${message}`);
+}
+
+export function logInfo(message: string): void {
+    core.info(`${message}`);
 }
 
 // Cache token authorized for all events that are tied to a ref
