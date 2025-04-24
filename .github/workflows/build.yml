@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - 'main'
+      - 'main-backup'
 
 permissions:
   contents: write
@@ -28,6 +28,6 @@ jobs:
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
           REPO: self
-          BRANCH: latest
+          BRANCH: latest-v1
           FOLDER: release
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
